@@ -42,6 +42,9 @@ const StoreModal = () => {
       const { data } = await axios.post('/api/stores', values);
 
       toast.success('Store created.');
+
+      // refresh the page --> redirect to StoreIdPage & close the modal
+      window.location.assign(`/${data.id}`);
     } catch (err) {
       console.log(err);
       toast.error('Something went wrong.');
@@ -81,6 +84,7 @@ const StoreModal = () => {
 
               <div className='pt-6 space-x-2 flex items-center justify-end w-full'>
                 <Button
+                  type='button'
                   variant='outline'
                   onClick={storeModal.onClose}
                   disabled={isLoading}
