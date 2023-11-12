@@ -22,7 +22,6 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useParams, useRouter } from 'next/navigation';
 import AlertModal from '@/components/modals/alert-modal';
-import ApiAlert from '@/components/api-alert';
 import ImageUpload from '@/components/image-upload';
 
 const formSchema = z.object({
@@ -72,8 +71,8 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
         await axios.post(`/api/${params.storeId}/billboards`, values);
       }
 
-      router.refresh();
       router.push(`/${params.storeId}/billboards`);
+      router.refresh();
 
       toast.success(toastMessage);
     } catch (err) {
@@ -92,8 +91,8 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
         `/api/${params.storeId}/billboards/${params.billboardId}`
       );
 
+      router.push(`/${params.storeId}/billboards`);
       router.refresh();
-      router.push('/');
 
       toast.success('Billboard deleted');
     } catch (err) {
@@ -180,8 +179,6 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
           </Button>
         </form>
       </Form>
-
-      <Separator />
     </>
   );
 };
