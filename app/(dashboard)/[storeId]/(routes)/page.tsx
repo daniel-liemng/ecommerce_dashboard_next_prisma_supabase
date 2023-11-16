@@ -24,12 +24,6 @@ interface DashboardPageProps {
 }
 
 const DashboardPage = async ({ params }: DashboardPageProps) => {
-  // const store = await prismadb.store.findFirst({
-  //   where: {
-  //     id: storeId,
-  //   },
-  // });
-
   const totalRevenue = await getTotalRevenue(params.storeId);
 
   const salesCount = await getSalesCount(params.storeId);
