@@ -38,8 +38,6 @@ const DashboardPage = async ({ params }: DashboardPageProps) => {
 
   const graphRevenue = await getGraphRevenue(params.storeId);
 
-  console.log(graphRevenue);
-
   return (
     <div className='flex-col'>
       <div className='flex-1 space-y-4 p-8 pt-6'>
